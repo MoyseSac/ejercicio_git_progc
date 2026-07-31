@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-# programa de comisiones
-# hecho por kevin, no tocar, ya funciona
+"""Calculo e impresion de las comisiones mensuales de los vendedores de La Comercial."""
 
-# lista de vendedores
 VENDEDORES = [
     ("María López", 45000.00),
     ("Carlos Pérez", 28500.00),
@@ -20,7 +18,6 @@ MONTO_BONO = 500
 
 
 def calcular_comision(monto_ventas):
-    # si vendio mas de 30000, comision del 8%; si no, del 5%
     if monto_ventas > UMBRAL_COMISION_ALTA:
         comision = monto_ventas * TASA_COMISION_ALTA
     else:
@@ -29,7 +26,7 @@ def calcular_comision(monto_ventas):
 
 
 def calcular_bono(monto_ventas):
-    # el bono es de 300
+    # bono fijo (no porcentual): asi lo definio gerencia para premiar el hito de 50000
     if monto_ventas > UMBRAL_BONO:
         return MONTO_BONO
     return 0
@@ -40,7 +37,6 @@ def calcular_total_vendedor(monto_ventas):
 
 
 def calcular_comisiones(vendedores):
-    # recorre la lista
     return [(nombre, calcular_total_vendedor(ventas)) for nombre, ventas in vendedores]
 
 
@@ -52,8 +48,6 @@ def imprimir_reporte(totales):
     for nombre, total in totales:
         total_pagado = total_pagado + total
         print(nombre + ": Q " + str(total))
-    # ta = tp * 1.12
-    # print("con iva", ta)
     print("-" * ANCHO_SEPARADOR)
     print("Total a pagar: Q " + str(round(total_pagado, 2)))
 
